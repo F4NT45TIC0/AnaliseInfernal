@@ -28,19 +28,39 @@ h1 {
     margin: 20px 0;
 }
 
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0;
+}
+
 button {
     background-color: #ff4444;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 30px;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 1em;
-    transition: background-color 0.3s;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
     background-color: #ff6666;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn {
+    margin-top: 20px;
+    background-color: #3d0808;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .option-btn {

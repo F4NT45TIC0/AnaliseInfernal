@@ -6,10 +6,13 @@
     <title>Análise Infernal</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
+<body>    <div class="container">
         <h1>Análise Infernal</h1>
-        <div id="question-container">
+        <div class="button-container">
+            <button id="start-survey" onclick="showSurvey()">Responder Pesquisa</button>
+            <button id="view-results" onclick="showResults()">Ver Resultados</button>
+        </div>
+        <div id="question-container" style="display: none;">
             <h2 id="current-question"></h2>
             <div id="options-container" class="options-grid"></div>
             <button id="next-btn" onclick="nextQuestion()">Próxima Pergunta</button>
@@ -17,7 +20,9 @@
         <div id="results-container" style="display: none;">
             <h2>Resultados</h2>
             <div id="charts-container"></div>
-        </div>    </div>
+            <button onclick="goBack()" class="back-btn">Voltar</button>
+        </div>
+    </div>
     <!-- Firebase App (the core Firebase SDK) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     

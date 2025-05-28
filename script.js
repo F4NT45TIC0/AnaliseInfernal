@@ -54,9 +54,9 @@ const perguntas = [
 let currentQuestionIndex = 0;
 let respostas = {};
 
-// Inicializar a primeira pergunta
+// Inicializar a aplicação
 window.onload = () => {
-    showQuestion(currentQuestionIndex);
+    // A página inicial já mostra os botões de escolha
 };
 
 function showQuestion(index) {
@@ -191,4 +191,28 @@ function loadResults() {
             });
         });
     });
+}
+
+// Funções de navegação
+function showSurvey() {
+    document.querySelector('.button-container').style.display = 'none';
+    document.getElementById('question-container').style.display = 'block';
+    document.getElementById('results-container').style.display = 'none';
+    showQuestion(currentQuestionIndex);
+}
+
+function showResults() {
+    document.querySelector('.button-container').style.display = 'none';
+    document.getElementById('question-container').style.display = 'none';
+    document.getElementById('results-container').style.display = 'block';
+    loadResults();
+}
+
+function goBack() {
+    document.querySelector('.button-container').style.display = 'flex';
+    document.getElementById('question-container').style.display = 'none';
+    document.getElementById('results-container').style.display = 'none';
+    // Resetar o questionário
+    currentQuestionIndex = 0;
+    respostas = {};
 }
