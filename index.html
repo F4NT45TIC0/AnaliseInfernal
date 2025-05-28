@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Infernal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Análise Infernal</h1>
+        <div id="question-container">
+            <h2 id="current-question"></h2>
+            <div id="options-container" class="options-grid"></div>
+            <button id="next-btn" onclick="nextQuestion()">Próxima Pergunta</button>
+        </div>
+        <div id="results-container" style="display: none;">
+            <h2>Resultados</h2>
+            <div id="charts-container"></div>
+        </div>    </div>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    
+    <!-- Firebase produtos que você quer usar -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    
+    <!-- Chart.js para os gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    
+    <!-- Nosso código -->
+    <script src="script.js"></script>
+
+    <script>
+        // Verificar se o Firebase está funcionando
+        window.onerror = function(msg, url, line) {
+            console.error('Erro:', msg, 'em', url, 'linha:', line);
+        }
+    </script>
+</body>
+</html>
