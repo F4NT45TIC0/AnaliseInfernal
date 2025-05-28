@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise Infernal</title>
+    <title>Análise Infernal 2.0</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>    <div class="container">
-        <h1>Análise Infernal</h1>        <div class="button-container">
-            <button id="start-survey" onclick="showSurvey()">Versão Normal</button>
+<body>
+    <div class="container">
+        <h1>Análise Infernal 2.0</h1>
+        <div class="button-container">
+            <button id="start-survey" onclick="showSurvey()">Responder Pesquisa</button>
             <button id="view-results" onclick="showResults()">Ver Resultados</button>
-            <button id="infernal-version" onclick="window.location.href='versao-infernal.html'" class="infernal-btn">Versão Infernal 2.0 🔥</button>
-        </div><div id="question-container" style="display: none;">
+            <button onclick="window.location.href='index.html'" class="back-btn">Voltar para Versão Normal</button>
+        </div>
+        <div id="question-container" style="display: none;">
             <h2 id="current-question"></h2>
-            <div id="options-container" class="options-grid"></div>            <div class="navigation-buttons">
+            <div id="options-container" class="options-grid"></div>
+            <div class="navigation-buttons">
                 <button id="prev-btn" onclick="previousQuestion()" class="nav-btn">Voltar</button>
                 <button id="next-btn" onclick="nextQuestion()" class="nav-btn">Próxima Pergunta</button>
                 <button onclick="goBack()" class="nav-btn cancel-btn">Cancelar Pesquisa</button>
             </div>
-        </div><div id="results-container" style="display: none;">
+        </div>
+        <div id="results-container" style="display: none;">
             <h2>Resultados</h2>
             <div id="charts-container"></div>
             <button onclick="goBack()" class="back-btn">Voltar ao Início</button>
@@ -26,21 +31,12 @@
     </div>
     <!-- Firebase App (the core Firebase SDK) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    
-    <!-- Firebase produtos que você quer usar -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-      <!-- Chart.js para os gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-    
-    <!-- html2pdf para exportação de PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    
-    <!-- Nosso código -->
-    <script src="script.js"></script>
+    <script src="script-infernal.js"></script>
 
     <script>
-        // Verificar se o Firebase está funcionando
         window.onerror = function(msg, url, line) {
             console.error('Erro:', msg, 'em', url, 'linha:', line);
         }
