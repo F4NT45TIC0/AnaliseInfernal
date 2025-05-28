@@ -146,8 +146,7 @@ function loadResults() {
                     respostasCount[resposta]++;
                 }
             });
-            
-            new Chart(canvas, {
+              new Chart(canvas, {
                 type: 'pie',
                 data: {
                     labels: Object.keys(respostasCount),
@@ -161,18 +160,46 @@ function loadResults() {
                             '#FFCE56'
                         ]
                     }]
-                },                options: {
+                },
+                options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            left: 20,
+                            right: 20,
+                            top: 0,
+                            bottom: 0
+                        }
+                    },
                     plugins: {
                         legend: {
-                            position: 'right',
+                            position: 'left',
+                            align: 'center',
                             labels: {
                                 color: 'white',
                                 font: {
-                                    size: 12
+                                    size: 14,
+                                    weight: 'bold'
                                 },
-                                padding: 10
+                                padding: 15,
+                                generateLabels: function(chart) {
+                                    const data = chart.data;
+                                    if (data.labels.length && data.datasets.length) {
+                                        return data.labels.map((label, i) => {
+                                            const value = data.datasets[0].data[i];
+                                            const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                            const percentage = ((value * 100) / total).toFixed(1);
+                                            return {
+                                                text: `${label} (${percentage}%)`,
+                                                fillStyle: data.datasets[0].backgroundColor[i],
+                                                hidden: false,
+                                                index: i
+                                            };
+                                        });
+                                    }
+                                    return [];
+                                }
                             }
                         },
                         tooltip: {
