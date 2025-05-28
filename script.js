@@ -62,6 +62,10 @@ window.onload = () => {
 function showQuestion(index) {
     const questionContainer = document.getElementById('current-question');
     const optionsContainer = document.getElementById('options-container');
+    const prevButton = document.getElementById('prev-btn');
+    
+    // Atualizar visibilidade do botão Voltar
+    prevButton.style.visibility = index === 0 ? 'hidden' : 'visible';
     
     questionContainer.textContent = perguntas[index];
     optionsContainer.innerHTML = '';
@@ -73,6 +77,16 @@ function showQuestion(index) {
         button.onclick = () => selectOption(integrante);
         optionsContainer.appendChild(button);
     });
+
+    // Restaurar seleção se houver resposta anterior
+    const previousAnswer = respostas[index];
+    if (previousAnswer) {
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            if (btn.textContent === previousAnswer) {
+                btn.classList.add('selected');
+            }
+        });
+    }
 }
 
 function selectOption(escolha) {
@@ -99,6 +113,23 @@ function nextQuestion() {
     } else {
         currentQuestionIndex++;
         showQuestion(currentQuestionIndex);
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showQuestion(currentQuestionIndex);
+        
+        // Restaurar a seleção anterior se existir
+        const previousAnswer = respostas[currentQuestionIndex];
+        if (previousAnswer) {
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                if (btn.textContent === previousAnswer) {
+                    btn.classList.add('selected');
+                }
+            });
+        }
     }
 }
 
@@ -243,3 +274,5 @@ function goBack() {
     currentQuestionIndex = 0;
     respostas = {};
 }
+
+

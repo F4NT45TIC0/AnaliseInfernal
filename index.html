@@ -11,16 +11,17 @@
         <div class="button-container">
             <button id="start-survey" onclick="showSurvey()">Responder Pesquisa</button>
             <button id="view-results" onclick="showResults()">Ver Resultados</button>
-        </div>
-        <div id="question-container" style="display: none;">
+        </div>        <div id="question-container" style="display: none;">
             <h2 id="current-question"></h2>
-            <div id="options-container" class="options-grid"></div>
-            <button id="next-btn" onclick="nextQuestion()">Próxima Pergunta</button>
-        </div>
-        <div id="results-container" style="display: none;">
+            <div id="options-container" class="options-grid"></div>            <div class="navigation-buttons">
+                <button id="prev-btn" onclick="previousQuestion()" class="nav-btn">Voltar</button>
+                <button id="next-btn" onclick="nextQuestion()" class="nav-btn">Próxima Pergunta</button>
+                <button onclick="goBack()" class="nav-btn cancel-btn">Cancelar Pesquisa</button>
+            </div>
+        </div><div id="results-container" style="display: none;">
             <h2>Resultados</h2>
             <div id="charts-container"></div>
-            <button onclick="goBack()" class="back-btn">Voltar</button>
+            <button onclick="goBack()" class="back-btn">Voltar ao Início</button>
         </div>
     </div>
     <!-- Firebase App (the core Firebase SDK) -->
@@ -29,9 +30,11 @@
     <!-- Firebase produtos que você quer usar -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-    
-    <!-- Chart.js para os gráficos -->
+      <!-- Chart.js para os gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    
+    <!-- html2pdf para exportação de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     
     <!-- Nosso código -->
     <script src="script.js"></script>
