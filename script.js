@@ -176,20 +176,47 @@ function loadResults() {
                 if (resposta) {
                     respostasCount[resposta]++;
                 }
-            });
-              new Chart(canvas, {
+            });            // Array de cores únicas para cada integrante
+            const cores = [
+                '#FF6384', // Vermelho rosado
+                '#36A2EB', // Azul
+                '#FFCE56', // Amarelo
+                '#4BC0C0', // Verde água
+                '#9966FF', // Roxo
+                '#FF9F40', // Laranja
+                '#FF5733', // Vermelho coral
+                '#33FF57', // Verde lima
+                '#338AFF', // Azul royal
+                '#FF33FF', // Rosa
+                '#33FFFF', // Ciano
+                '#FFB533', // Amarelo dourado
+                '#B533FF', // Roxo intenso
+                '#33FFB5', // Verde menta
+                '#FF3366', // Rosa escuro
+                '#66FF33', // Verde neon
+                '#3366FF', // Azul médio
+                '#FF6633', // Laranja avermelhado
+                '#33FFF9', // Turquesa
+                '#F933FF', // Magenta
+                '#FF3333'  // Vermelho vivo
+            ];
+
+            // Filtrar apenas as respostas com contagem > 0
+            const filteredData = Object.entries(respostasCount)
+                .filter(([_, count]) => count > 0)
+                .reduce((obj, [key, value]) => {
+                    obj[key] = value;
+                    return obj;
+                }, {});
+
+            // Criar o gráfico apenas com os dados filtrados
+            new Chart(canvas, {
                 type: 'pie',
                 data: {
-                    labels: Object.keys(respostasCount),
+                    labels: Object.keys(filteredData),
                     datasets: [{
-                        data: Object.values(respostasCount),
-                        backgroundColor: [
-                            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
-                            '#FF9F40', '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0',
-                            '#9966FF', '#FF9F40', '#FF6384', '#36A2EB', '#FFCE56',
-                            '#4BC0C0', '#9966FF', '#FF9F40', '#FF6384', '#36A2EB',
-                            '#FFCE56'
-                        ]
+                        data: Object.values(filteredData),
+                        backgroundColor: cores.slice(0, Object.keys(filteredData).length)
                     }]
                 },
                 options: {
@@ -202,10 +229,9 @@ function loadResults() {
                             top: 0,
                             bottom: 0
                         }
-                    },
-                    plugins: {
+                    },                    plugins: {
                         legend: {
-                            position: 'left',
+                            position: 'right',
                             align: 'center',
                             labels: {
                                 color: 'white',
@@ -213,7 +239,8 @@ function loadResults() {
                                     size: 14,
                                     weight: 'bold'
                                 },
-                                padding: 15,
+                                padding: 20,
+                                boxWidth: 30,
                                 generateLabels: function(chart) {
                                     const data = chart.data;
                                     if (data.labels.length && data.datasets.length) {
